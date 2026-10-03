@@ -1,0 +1,55 @@
+# Laravel
+
+/caso1-laravel/vendor/
+/caso1-laravel/node_modules/
+/caso1-laravel/.env
+/caso1-laravel/.env.*
+!/caso1-laravel/.env.example
+
+# Laravel generated files
+
+/caso1-laravel/storage/logs/*
+/caso1-laravel/storage/framework/cache/*
+/caso1-laravel/storage/framework/sessions/*
+/caso1-laravel/storage/framework/views/*
+
+# IDE / Editors
+
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Docker
+
+docker-compose.override.yml
+
+# Logs
+
+*.log
+
+# Temporary files
+
+*.tmp
+*.temp
+*~
+
+# Environment / secrets
+
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Build / coverage
+
+coverage/
+dist/
+build/
+.cache/

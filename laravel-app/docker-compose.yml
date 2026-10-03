@@ -1,0 +1,50 @@
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel-app
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      frontend-net:
+        ipv4_address: 172.20.0.10
+      backend-net:
+        ipv4_address: 172.20.1.10
+  db:
+    image: mysql:8.4
+    container_name: laravel-db
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      backend-net:
+        ipv4_address: 172.20.1.20
+
+volumes:
+  mysql_data:
+
+networks:
+  frontend-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+          gateway: 172.20.0.1
+
+  backend-net:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.20.1.0/24
+          gateway: 172.20.1.1
